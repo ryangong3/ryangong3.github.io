@@ -54,7 +54,7 @@ const websites = [
       "独立设计并开发青少年篮球课程双语平台，基于 Next.js 与 Supabase 实现家长选课、试听申请、机构线索 CRM 和运营后台。",
     tags: ["Next.js", "Supabase", "双语平台", "CRM"],
     visual: "hoopsprout",
-    image: null,
+    image: "/portfolio/hoopsprout-logo.png",
   },
   {
     index: "02",
@@ -76,7 +76,7 @@ const websites = [
       "独立设计并搭建中英法三语餐厅网站，整合菜单、价格展示、在线点餐、桌面二维码入口与订单系统。",
     tags: ["Wix", "GloriaFood", "三语网站", "在线点餐"],
     visual: "chinchine",
-    image: "/portfolio/chinchine.png",
+    image: "/portfolio/chinchine-site.png",
   },
 ] as const;
 
@@ -310,7 +310,7 @@ export default function Home() {
         <div className="section-heading portfolio-heading">
           <div>
             <p className="kicker">SELECTED WORK</p>
-            <h2>从想法到上线。</h2>
+            <h2>作品集</h2>
           </div>
           <p className="portfolio-summary">
             03 WEBSITES
