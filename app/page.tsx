@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { PointerEvent } from "react";
+import type { CSSProperties, PointerEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 
 type ZoneKey = "mind" | "repair" | "create";
@@ -110,7 +110,14 @@ export default function Home() {
           id="explore"
           onPointerMove={moveCharacter}
           onPointerLeave={() => setTilt({ x: 0, y: 0 })}
+          style={
+            {
+              "--cursor-x": `${50 + tilt.x * 2.2}%`,
+              "--cursor-y": `${48 - tilt.y * 2.2}%`,
+            } as CSSProperties
+          }
         >
+          <div className="ambient-haze" aria-hidden="true" />
           <div className="orbit orbit-one" aria-hidden="true" />
           <div className="orbit orbit-two" aria-hidden="true" />
           <div
@@ -119,42 +126,44 @@ export default function Home() {
               transform: `perspective(900px) rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
             }}
           >
-            <Image
-              className="character"
-              src="/virtual-avatar-v2-illustrated.png"
-              alt="戴眼镜、双手发光的虚拟人物，头部呈现紫色创意思维云"
-              width={887}
-              height={1774}
-              priority
-            />
+            <div className="character-float">
+              <Image
+                className="character"
+                src="/virtual-avatar-v2-illustrated.png"
+                alt="戴眼镜、双手发光的虚拟人物，头部呈现紫色创意思维云"
+                width={887}
+                height={1774}
+                priority
+              />
 
-            <button
-              className={`hotspot hotspot-mind ${active === "mind" ? "is-active" : ""}`}
-              type="button"
-              aria-label="查看创意、AI与语言能力"
-              aria-pressed={active === "mind"}
-              onClick={() => setActive(active === "mind" ? null : "mind")}
-            >
-              <span>创意思维</span>
-            </button>
-            <button
-              className={`hotspot hotspot-repair ${active === "repair" ? "is-active" : ""}`}
-              type="button"
-              aria-label="查看设备维修与故障排查能力"
-              aria-pressed={active === "repair"}
-              onClick={() => setActive(active === "repair" ? null : "repair")}
-            >
-              <span>设备排障</span>
-            </button>
-            <button
-              className={`hotspot hotspot-create ${active === "create" ? "is-active" : ""}`}
-              type="button"
-              aria-label="查看网站、视频与动效能力"
-              aria-pressed={active === "create"}
-              onClick={() => setActive(active === "create" ? null : "create")}
-            >
-              <span>数字创作</span>
-            </button>
+              <button
+                className={`hotspot hotspot-mind ${active === "mind" ? "is-active" : ""}`}
+                type="button"
+                aria-label="查看创意、AI与语言能力"
+                aria-pressed={active === "mind"}
+                onClick={() => setActive(active === "mind" ? null : "mind")}
+              >
+                <span>创意思维</span>
+              </button>
+              <button
+                className={`hotspot hotspot-repair ${active === "repair" ? "is-active" : ""}`}
+                type="button"
+                aria-label="查看设备维修与故障排查能力"
+                aria-pressed={active === "repair"}
+                onClick={() => setActive(active === "repair" ? null : "repair")}
+              >
+                <span>设备排障</span>
+              </button>
+              <button
+                className={`hotspot hotspot-create ${active === "create" ? "is-active" : ""}`}
+                type="button"
+                aria-label="查看网站、视频与动效能力"
+                aria-pressed={active === "create"}
+                onClick={() => setActive(active === "create" ? null : "create")}
+              >
+                <span>数字创作</span>
+              </button>
+            </div>
           </div>
           <p className="interaction-hint">点击发光的头部或双手</p>
         </div>

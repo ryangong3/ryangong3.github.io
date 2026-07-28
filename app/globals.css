@@ -194,26 +194,115 @@ nav a:focus-visible {
   z-index: 3;
   display: grid;
   min-height: 76svh;
+  isolation: isolate;
   place-items: center;
+}
+
+.character-stage::before {
+  position: absolute;
+  inset: 5% -8%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 48%), rgba(75, 210, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 50% 28%, rgba(132, 78, 255, 0.2), transparent 38%),
+    radial-gradient(circle at 28% 55%, rgba(255, 145, 62, 0.09), transparent 24%);
+  content: "";
+  filter: blur(1.2rem);
+  opacity: 0.85;
+  transition: background-position 240ms ease-out;
+  animation: field-breathe 6s ease-in-out infinite;
+}
+
+.character-stage::after {
+  position: absolute;
+  inset: 3% -3%;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(141, 99, 255, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(62, 219, 255, 0.7) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle, rgba(255, 158, 69, 0.55) 0 0.7px, transparent 1.2px);
+  background-position: 0 0, 1.7rem 2.4rem, 3.4rem 1rem;
+  background-size: 5.3rem 5.3rem, 7.2rem 7.2rem, 9rem 9rem;
+  content: "";
+  mask-image: radial-gradient(ellipse at center, #000 10%, transparent 72%);
+  opacity: 0.32;
+  animation: particle-drift 18s linear infinite;
+}
+
+.ambient-haze {
+  position: absolute;
+  z-index: 0;
+  width: 86%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 30deg, transparent, rgba(141, 99, 255, 0.16), transparent 30%, rgba(62, 219, 255, 0.1), transparent 68%),
+    radial-gradient(circle, rgba(41, 35, 91, 0.4), transparent 66%);
+  filter: blur(1.4rem);
+  opacity: 0.7;
+  animation: haze-turn 26s linear infinite;
 }
 
 .character-wrap {
   position: relative;
+  z-index: 3;
   width: min(100%, 34rem);
   transform-style: preserve-3d;
   transition: transform 220ms ease-out;
+}
+
+.character-float {
+  position: relative;
+  animation: character-float 5.4s ease-in-out infinite;
+}
+
+.character-float::before {
+  position: absolute;
+  inset: 8% -5% 2%;
+  z-index: -1;
+  border-radius: 46%;
+  background:
+    radial-gradient(circle at 50% 17%, rgba(138, 91, 255, 0.3), transparent 25%),
+    radial-gradient(circle at 16% 45%, rgba(255, 158, 69, 0.18), transparent 17%),
+    radial-gradient(circle at 84% 45%, rgba(62, 219, 255, 0.2), transparent 18%);
+  content: "";
+  filter: blur(2rem);
+  opacity: 0.8;
+  animation: aura-pulse 4.2s ease-in-out infinite;
+}
+
+.character-float::after {
+  position: absolute;
+  top: 8%;
+  bottom: 7%;
+  left: -12%;
+  z-index: 4;
+  width: 10%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(110, 225, 255, 0.14), transparent);
+  content: "";
+  filter: blur(0.6rem);
+  opacity: 0;
+  transform: skewX(-14deg);
+  animation: energy-scan 8s ease-in-out infinite;
 }
 
 .character {
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 1.5rem 3rem rgba(0, 0, 0, 0.48));
-  mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
+  filter:
+    drop-shadow(0 1.5rem 3rem rgba(0, 0, 0, 0.48))
+    saturate(1.06);
+  -webkit-mask-image: radial-gradient(ellipse 58% 52% at 50% 46%, #000 58%, rgba(0, 0, 0, 0.94) 74%, transparent 100%);
+  mask-image: radial-gradient(ellipse 58% 52% at 50% 46%, #000 58%, rgba(0, 0, 0, 0.94) 74%, transparent 100%);
 }
 
 .orbit {
   position: absolute;
+  z-index: 2;
   width: 78%;
   aspect-ratio: 1;
   border: 1px solid rgba(115, 98, 255, 0.18);
@@ -271,13 +360,14 @@ nav a:focus-visible {
 .hotspot span {
   position: absolute;
   top: calc(100% + 0.45rem);
+  left: 50%;
   width: max-content;
   border-radius: 999px;
   padding: 0.28rem 0.55rem;
   background: rgba(6, 9, 16, 0.78);
   font-size: 0.68rem;
   opacity: 0;
-  transform: translateY(-0.3rem);
+  transform: translate(-50%, -0.3rem);
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
@@ -285,7 +375,7 @@ nav a:focus-visible {
 .hotspot:focus-visible span,
 .hotspot.is-active span {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .hotspot:hover,
@@ -295,10 +385,15 @@ nav a:focus-visible {
 }
 
 .hotspot-mind {
-  top: 7%;
+  top: 6%;
   left: 40.5%;
   color: #9b7cff;
   box-shadow: 0 0 2.8rem rgba(141, 99, 255, 0.18);
+}
+
+.hotspot-mind span {
+  top: auto;
+  bottom: calc(100% + 0.65rem);
 }
 
 .hotspot-repair {
@@ -621,6 +716,71 @@ footer {
 @keyframes orbit-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes character-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-0.55rem) scale(1.006);
+  }
+}
+
+@keyframes field-breathe {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes aura-pulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes haze-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particle-drift {
+  to {
+    background-position: 5.3rem 5.3rem, -5.5rem 9.6rem, 12.4rem -7rem;
+  }
+}
+
+@keyframes energy-scan {
+  0%,
+  74% {
+    left: -14%;
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.55;
+  }
+  92% {
+    left: 104%;
+    opacity: 0.25;
+  }
+  100% {
+    left: 104%;
+    opacity: 0;
   }
 }
 
