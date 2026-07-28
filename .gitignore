@@ -43,3 +43,8 @@ next-env.d.ts
 /.npm-cache/
 /.sites-dev-output.log
 /.sites-dev-error.log
+/preview-output.log
+/preview-error.log
+/preview-*-output.log
+/preview-*-error.log
+/.local-preview-proxy.mjs
