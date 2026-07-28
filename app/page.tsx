@@ -44,8 +44,68 @@ const zones: Record<
 
 const zoneOrder: ZoneKey[] = ["mind", "repair", "create"];
 
+const websites = [
+  {
+    index: "01",
+    title: "篮芽 HoopSprout",
+    type: "全栈开发个人项目",
+    url: "https://www.hoopsprout.ca/",
+    description:
+      "独立设计并开发青少年篮球课程双语平台，基于 Next.js 与 Supabase 实现家长选课、试听申请、机构线索 CRM 和运营后台。",
+    tags: ["Next.js", "Supabase", "双语平台", "CRM"],
+    visual: "hoopsprout",
+    image: null,
+  },
+  {
+    index: "02",
+    title: "ClickStone Media 官网",
+    type: "品牌网站设计与搭建",
+    url: "https://clickstonemedia.ca/",
+    description:
+      "独立完成数字营销公司官网的品牌视觉、服务介绍、案例展示、联系表单与微信二维码，支持电脑端和移动端浏览。",
+    tags: ["Wix", "Canva", "AI 工具", "响应式设计"],
+    visual: "clickstone",
+    image: "/portfolio/clickstone.png",
+  },
+  {
+    index: "03",
+    title: "CHIN CHINE 餐厅官网",
+    type: "多语言餐饮网站",
+    url: "https://www.chinchine.ca/",
+    description:
+      "独立设计并搭建中英法三语餐厅网站，整合菜单、价格展示、在线点餐、桌面二维码入口与订单系统。",
+    tags: ["Wix", "GloriaFood", "三语网站", "在线点餐"],
+    visual: "chinchine",
+    image: "/portfolio/chinchine.png",
+  },
+] as const;
+
+const videos = [
+  {
+    index: "01",
+    title: "品牌宣传片",
+    url: "https://www.youtube.com/watch?v=aZq9Er5NF7k",
+    embedUrl: "https://www.youtube-nocookie.com/embed/aZq9Er5NF7k?autoplay=1&rel=0",
+    image: "/portfolio/brand-film.jpg",
+    description:
+      "以“石头蜕变为黄金”为核心视觉，独立完成创意策划、分镜、AI 画面生成、动态制作、音效与后期剪辑。",
+    tags: ["创意策划", "AI 视觉", "动态制作", "后期剪辑"],
+  },
+  {
+    index: "02",
+    title: "Wakame Sushi 足球主题广告",
+    url: "https://www.youtube.com/watch?v=Sndiv87OZvM",
+    embedUrl: "https://www.youtube-nocookie.com/embed/Sndiv87OZvM?autoplay=1&rel=0",
+    image: "/portfolio/wakame-ad.jpg",
+    description:
+      "用足球旋转变成三文鱼刺身，再切换至寿司、啤酒与看球场景，突出餐厅的大屏观赛氛围。",
+    tags: ["广告创意", "分镜设计", "AI 画面", "音效剪辑"],
+  },
+] as const;
+
 export default function Home() {
   const [active, setActive] = useState<ZoneKey | null>(null);
+  const [activeVideo, setActiveVideo] = useState<(typeof videos)[number] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -56,6 +116,20 @@ export default function Home() {
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
   }, []);
+
+  useEffect(() => {
+    if (!activeVideo) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveVideo(null);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [activeVideo]);
 
   const selected = useMemo(() => (active ? zones[active] : null), [active]);
 
@@ -77,6 +151,7 @@ export default function Home() {
         </a>
         <nav aria-label="主要导航">
           <a href="#skills">能力</a>
+          <a href="#portfolio">作品</a>
           <a href="#work">方向</a>
           <a href="#contact">联系</a>
         </nav>
@@ -231,6 +306,116 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="portfolio-section" id="portfolio">
+        <div className="section-heading portfolio-heading">
+          <div>
+            <p className="kicker">SELECTED WORK</p>
+            <h2>从想法到上线。</h2>
+          </div>
+          <p className="portfolio-summary">
+            03 WEBSITES
+            <br />
+            02 FILMS
+          </p>
+        </div>
+
+        <div className="portfolio-group-heading">
+          <span>网站项目</span>
+          <span>WEB / 01—03</span>
+        </div>
+        <div className="website-grid">
+          {websites.map((project) => (
+            <article className="website-card" key={project.title}>
+              <a
+                className={`website-preview preview-${project.visual}`}
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`打开 ${project.title} 网站`}
+              >
+                <div className="browser-chrome" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                  <small>{new URL(project.url).hostname}</small>
+                </div>
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} 项目封面`}
+                    fill
+                    sizes="(max-width: 760px) 100vw, 33vw"
+                  />
+                ) : (
+                  <div className="hoopsprout-visual">
+                    <span className="court-line court-line-one" />
+                    <span className="court-line court-line-two" />
+                    <span className="basketball-mark" aria-hidden="true" />
+                    <strong>篮芽</strong>
+                    <small>HOOPSPROUT</small>
+                  </div>
+                )}
+                <span className="visit-project">访问网站 ↗</span>
+              </a>
+              <div className="project-meta">
+                <span>{project.index}</span>
+                <span>{project.type}</span>
+              </div>
+              <h3>
+                <a href={project.url} target="_blank" rel="noreferrer">
+                  {project.title}
+                </a>
+              </h3>
+              <p>{project.description}</p>
+              <ul className="project-tags" aria-label={`${project.title} 使用技术`}>
+                {project.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div className="portfolio-group-heading video-group-heading">
+          <span>视频作品</span>
+          <span>FILM / 01—02</span>
+        </div>
+        <div className="video-grid">
+          {videos.map((video) => (
+            <article className="video-card" key={video.title}>
+              <button
+                className="video-preview"
+                type="button"
+                onClick={() => setActiveVideo(video)}
+                aria-label={`播放 ${video.title}`}
+              >
+                <Image
+                  src={video.image}
+                  alt={`${video.title} 视频封面`}
+                  fill
+                  sizes="(max-width: 760px) 100vw, 50vw"
+                />
+                <span className="play-button" aria-hidden="true">
+                  <i />
+                </span>
+                <span className="play-label">站内播放</span>
+              </button>
+              <div className="project-meta">
+                <span>{video.index}</span>
+                <span>创意广告 / VIDEO</span>
+              </div>
+              <h3>{video.title}</h3>
+              <p>{video.description}</p>
+              <ul className="project-tags" aria-label={`${video.title} 制作内容`}>
+                {video.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="work-section" id="work">
         <div className="section-heading">
           <p className="kicker">WHERE I CAN CONTRIBUTE</p>
@@ -278,6 +463,41 @@ export default function Home() {
         <span>Interactive portfolio · 2026</span>
         <a href="#top">返回顶部 ↑</a>
       </footer>
+
+      {activeVideo ? (
+        <div
+          className="video-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="video-modal-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setActiveVideo(null);
+          }}
+        >
+          <div className="video-dialog">
+            <div className="video-dialog-header">
+              <div>
+                <span>NOW PLAYING</span>
+                <h2 id="video-modal-title">{activeVideo.title}</h2>
+              </div>
+              <button type="button" onClick={() => setActiveVideo(null)} aria-label="关闭视频">
+                关闭 ×
+              </button>
+            </div>
+            <div className="video-frame">
+              <iframe
+                src={activeVideo.embedUrl}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <a href={activeVideo.url} target="_blank" rel="noreferrer">
+              在 YouTube 打开 ↗
+            </a>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
