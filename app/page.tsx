@@ -86,9 +86,8 @@ export default function Home() {
         <div className="hero-copy">
           <p className="kicker">MULTIMEDIA × TECHNOLOGY × IDEAS</p>
           <h1>
-            创造想法，
-            <br />
-            也修好现实。
+            <span>创造想法，</span>
+            <span>也修好现实。</span>
           </h1>
           <p className="hero-intro">
             我是一名多媒体技术创作者，结合网站制作、视频动效、AI 工具与软硬件故障排查，
