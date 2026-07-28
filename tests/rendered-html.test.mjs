@@ -54,6 +54,9 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.match(page, /https:\/\/www\.chinchine\.ca\//);
   assert.match(page, /youtube-nocookie\.com\/embed\/aZq9Er5NF7k/);
   assert.match(page, /youtube-nocookie\.com\/embed\/Sndiv87OZvM/);
-  assert.match(page, /onClick=\{\(\) => setActive\(key\)\}/);
+  assert.match(page, /setActive\(key\)/);
+  assert.match(page, /setHasInteracted\(true\)/);
+  assert.match(page, /mobile-node-card/);
+  assert.match(page, /energy-system/);
   assert.match(page, /onClick=\{\(\) => setActiveVideo\(video\)\}/);
 });

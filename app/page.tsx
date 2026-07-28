@@ -264,6 +264,7 @@ export default function Home() {
     return saved === "en" ? "en" : "zh";
   });
   const [active, setActive] = useState<ZoneKey>("create");
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [activeVideo, setActiveVideo] = useState<(typeof videos)[number] | null>(null);
 
   useEffect(() => {
@@ -336,8 +337,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="character-stage" aria-label={t.nodeHint}>
+        <div className={`character-stage stage-${active}`} aria-label={t.nodeHint}>
           <div className="avatar-field" aria-hidden="true" />
+          <div className="energy-system" aria-hidden="true">
+            <span className="scan-orbit scan-orbit-one" />
+            <span className="scan-orbit scan-orbit-two" />
+            <span className="energy-core energy-head" />
+            <span className="energy-core energy-left-hand" />
+            <span className="energy-core energy-right-hand" />
+            <span className="signal-particle particle-one" />
+            <span className="signal-particle particle-two" />
+            <span className="signal-particle particle-three" />
+            <span className="signal-particle particle-four" />
+            <span className="signal-particle particle-five" />
+          </div>
           <Image
             className="avatar"
             src="/virtual-avatar-v2-illustrated.png"
@@ -354,7 +367,10 @@ export default function Home() {
                 className={`hotspot hotspot-${key} ${active === key ? "is-active" : ""}`}
                 type="button"
                 key={key}
-                onClick={() => setActive(key)}
+                onClick={() => {
+                  setActive(key);
+                  setHasInteracted(true);
+                }}
                 aria-pressed={active === key}
                 aria-label={zones[key].title}
               >
@@ -364,6 +380,33 @@ export default function Home() {
             );
           })}
           <p className="interaction-hint">{t.nodeHint}</p>
+
+          <aside
+            className={`mobile-node-card panel-${active} ${hasInteracted ? "is-visible" : ""}`}
+            aria-live="polite"
+            aria-hidden={!hasInteracted}
+          >
+            <button
+              className="mobile-card-close"
+              type="button"
+              onClick={() => setHasInteracted(false)}
+              aria-label={language === "zh" ? "关闭技能卡片" : "Close skill card"}
+            >
+              <X weight="bold" />
+            </button>
+            <div className="panel-heading">
+              <span className="panel-signal" aria-hidden="true" />
+              <p>{selected.eyebrow}</p>
+            </div>
+            <div className="mobile-card-title">
+              <ActiveIcon weight="duotone" />
+              <h2>{selected.title}</h2>
+            </div>
+            <p>{selected.description}</p>
+            <ul className="panel-skills">
+              {selected.skills.slice(0, 4).map((skill) => <li key={skill}>{skill}</li>)}
+            </ul>
+          </aside>
         </div>
 
         <aside className={`active-panel panel-${active}`} aria-live="polite">
