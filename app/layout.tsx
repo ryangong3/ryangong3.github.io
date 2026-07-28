@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const baseUrl = new URL(`${protocol}://${host}`);
-  const title = "Creative Technologist | Multimedia & Technical Support";
+  const title = "Ryan Gong | Creative Technologist";
   const description =
     "一份可以探索的互动简历：网站制作、视频与动效、多媒体设备和软硬件故障排查。";
 

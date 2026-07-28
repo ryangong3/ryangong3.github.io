@@ -787,8 +787,15 @@ blockquote {
 }
 
 .preview-hoopsprout > img {
-  padding: 0.75rem 1.4rem;
-  object-fit: contain;
+  padding: 0;
+  object-fit: cover;
+  object-position: center 52%;
+  transform: scale(1.04);
+}
+
+.preview-hoopsprout:hover > img,
+.preview-hoopsprout:focus-visible > img {
+  transform: scale(1.09);
 }
 
 .preview-clickstone {
@@ -1068,11 +1075,14 @@ blockquote {
 }
 
 .card-title {
-  margin-top: auto;
+  min-height: 4rem;
+  margin-top: 6rem;
   font-size: 1.45rem;
+  line-height: 1.35;
 }
 
 .card-copy {
+  min-height: 6.5rem;
   margin-top: 1rem;
   color: var(--muted);
   font-size: 0.88rem;
@@ -1080,7 +1090,8 @@ blockquote {
 }
 
 .card-link {
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
   font-size: 0.75rem;
 }
 
@@ -1157,11 +1168,24 @@ blockquote {
   margin-top: 3rem;
 }
 
-.contact-placeholder span {
+.contact-placeholder a {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.8rem 1rem;
   color: var(--muted);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.contact-placeholder a:hover,
+.contact-placeholder a:focus-visible {
+  border-color: rgba(62, 219, 255, 0.55);
+  background: rgba(62, 219, 255, 0.08);
+  color: var(--foreground);
+  transform: translateY(-2px);
 }
 
 footer {
@@ -1265,7 +1289,7 @@ footer {
     grid-column: 1 / -1;
     min-height: auto;
     max-width: 58rem;
-    margin: -4rem auto 2rem;
+    margin: 1rem auto 2rem;
   }
 
   .panel-empty {
@@ -1360,6 +1384,20 @@ footer {
     min-height: 18rem;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+  }
+
+  .card-title {
+    min-height: auto;
+    margin-top: 3rem;
+  }
+
+  .card-copy {
+    min-height: auto;
+  }
+
+  .card-link {
+    margin-top: 1.5rem;
+    padding-top: 0;
   }
 
   .skills-section,

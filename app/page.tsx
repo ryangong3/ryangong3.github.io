@@ -147,7 +147,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="返回首页">
           <span className="brand-mark" aria-hidden="true" />
-          <span>CREATIVE TECHNOLOGIST</span>
+          <span>RYAN GONG</span>
         </a>
         <nav aria-label="主要导航">
           <a href="#skills">能力</a>
@@ -159,7 +159,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="kicker">MULTIMEDIA × TECHNOLOGY × IDEAS</p>
+          <p className="kicker">RYAN GONG / MULTIMEDIA × TECHNOLOGY × IDEAS</p>
           <h1>
             <span>创造想法，</span>
             <span>也修好现实。</span>
@@ -454,13 +454,17 @@ export default function Home() {
         <h2>有一个需要创意与技术一起解决的问题？</h2>
         <p>我目前在多伦多寻找多媒体技术、AV/IT 支持与数字内容相关机会。</p>
         <div className="contact-placeholder">
-          <span>邮箱与 LinkedIn 待补充</span>
-          <span>PDF 简历准备中</span>
+          <a href="mailto:GONGRUI001@GMAIL.COM">
+            发送邮件 · GONGRUI001@GMAIL.COM
+          </a>
+          <a href="tel:+15794210829" aria-label="拨打电话 579 421 0829">
+            电话 · +1 (579) 421-0829
+          </a>
         </div>
       </section>
 
       <footer>
-        <span>Interactive portfolio · 2026</span>
+        <span>Ryan Gong · Interactive portfolio · 2026</span>
         <a href="#top">返回顶部 ↑</a>
       </footer>
 
