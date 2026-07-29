@@ -543,7 +543,7 @@ a:focus-visible {
   position: absolute;
   top: 64%;
   right: calc(100% + 0.35rem);
-  width: clamp(6rem, 18vw, 9rem);
+  width: clamp(3rem, 9vw, 4.5rem);
   height: 1px;
   background: linear-gradient(90deg, transparent, currentColor);
   box-shadow: 0 0 0.7rem currentColor;
@@ -564,7 +564,7 @@ a:focus-visible {
   position: absolute;
   top: 50%;
   left: calc(100% + 0.35rem);
-  width: clamp(4rem, 11vw, 6rem);
+  width: clamp(2rem, 5.5vw, 3rem);
   height: 1px;
   background: linear-gradient(90deg, currentColor, transparent);
   box-shadow: 0 0 0.7rem currentColor;
@@ -583,7 +583,7 @@ a:focus-visible {
   position: absolute;
   top: 50%;
   right: calc(100% + 0.35rem);
-  width: clamp(4.5rem, 13vw, 7rem);
+  width: clamp(2.25rem, 6.5vw, 3.5rem);
   height: 1px;
   background: linear-gradient(90deg, transparent, currentColor);
   box-shadow: 0 0 0.7rem currentColor;
