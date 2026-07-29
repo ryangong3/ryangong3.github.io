@@ -413,6 +413,7 @@ a:focus-visible {
 }
 
 .energy-head {
+  display: none;
   top: var(--mind-y);
   left: var(--mind-x);
   color: var(--cyan);
