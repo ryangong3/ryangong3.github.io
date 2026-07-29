@@ -292,6 +292,10 @@ a:focus-visible {
   --left-hand-x: 23%;
   --right-hand-x: 74%;
   --hands-y: 43.5%;
+  --mind-control-x: 79%;
+  --mind-control-y: 5%;
+  --left-control-x: 7%;
+  --right-control-x: 93%;
   position: relative;
   z-index: 2;
   height: 39rem;
@@ -530,33 +534,62 @@ a:focus-visible {
 }
 
 .hotspot-mind {
-  top: var(--mind-y);
-  left: var(--mind-x);
-  width: 9rem;
-  height: 8rem;
-  border-color: transparent;
-  background: transparent;
+  top: var(--mind-control-y);
+  left: var(--mind-control-x);
   color: var(--cyan);
-  box-shadow: none;
-  backdrop-filter: none;
 }
 
-.hotspot-mind::after,
-.hotspot-mind > svg,
-.hotspot-mind > span {
-  display: none;
+.hotspot-mind::before {
+  position: absolute;
+  top: 64%;
+  right: calc(100% + 0.35rem);
+  width: clamp(6rem, 18vw, 9rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  box-shadow: 0 0 0.7rem currentColor;
+  content: "";
+  opacity: 0.55;
+  transform: rotate(-15deg);
+  transform-origin: right center;
+  pointer-events: none;
 }
 
 .hotspot-repair {
   top: var(--hands-y);
-  left: var(--left-hand-x);
+  left: var(--left-control-x);
   color: var(--orange);
+}
+
+.hotspot-repair::before {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 0.35rem);
+  width: clamp(4rem, 11vw, 6rem);
+  height: 1px;
+  background: linear-gradient(90deg, currentColor, transparent);
+  box-shadow: 0 0 0.7rem currentColor;
+  content: "";
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .hotspot-create {
   top: var(--hands-y);
-  left: var(--right-hand-x);
+  left: var(--right-control-x);
   color: var(--violet);
+}
+
+.hotspot-create::before {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.35rem);
+  width: clamp(4.5rem, 13vw, 7rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  box-shadow: 0 0 0.7rem currentColor;
+  content: "";
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .hotspot:hover,
@@ -564,13 +597,6 @@ a:focus-visible {
   background: color-mix(in srgb, currentColor 16%, rgba(5, 12, 23, 0.9));
   box-shadow: 0 0 2.6rem color-mix(in srgb, currentColor 44%, transparent);
   transform: translate(-50%, -50%) scale(1.08);
-}
-
-.hotspot-mind:hover,
-.hotspot-mind.is-active {
-  background: transparent;
-  box-shadow: none;
-  transform: translate(-50%, -50%);
 }
 
 .interaction-hint {
