@@ -289,7 +289,6 @@ a:focus-visible {
 .character-stage {
   --mind-x: 50%;
   --mind-y: 10.5%;
-  --mind-control-y: 1.5%;
   --left-hand-x: 23%;
   --right-hand-x: 74%;
   --hands-y: 43.5%;
@@ -531,23 +530,21 @@ a:focus-visible {
 }
 
 .hotspot-mind {
-  top: var(--mind-control-y);
+  top: var(--mind-y);
   left: var(--mind-x);
+  width: 9rem;
+  height: 8rem;
+  border-color: transparent;
+  background: transparent;
   color: var(--cyan);
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
-.hotspot-mind::before {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 50%;
-  width: 1px;
-  height: clamp(2.4rem, 7vh, 3.8rem);
-  background: linear-gradient(180deg, currentColor, transparent);
-  box-shadow: 0 0 0.75rem currentColor;
-  content: "";
-  opacity: 0.58;
-  transform: translateX(-50%);
-  pointer-events: none;
+.hotspot-mind::after,
+.hotspot-mind > svg,
+.hotspot-mind > span {
+  display: none;
 }
 
 .hotspot-repair {
@@ -567,6 +564,13 @@ a:focus-visible {
   background: color-mix(in srgb, currentColor 16%, rgba(5, 12, 23, 0.9));
   box-shadow: 0 0 2.6rem color-mix(in srgb, currentColor 44%, transparent);
   transform: translate(-50%, -50%) scale(1.08);
+}
+
+.hotspot-mind:hover,
+.hotspot-mind.is-active {
+  background: transparent;
+  box-shadow: none;
+  transform: translate(-50%, -50%);
 }
 
 .interaction-hint {
