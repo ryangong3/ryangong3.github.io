@@ -933,8 +933,9 @@ a:focus-visible {
 
 .project-card:nth-child(1) .project-image img {
   object-fit: contain;
+  object-position: center;
   background: #fff;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(0.5rem, 1vw, 0.85rem);
 }
 
 .project-card:nth-child(2) .project-image img {
