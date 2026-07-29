@@ -292,9 +292,9 @@ a:focus-visible {
   --left-hand-x: 23%;
   --right-hand-x: 74%;
   --hands-y: 43.5%;
-  --mind-control-x: 79%;
+  --mind-control-x: 74%;
   --mind-control-y: 5%;
-  --left-control-x: 7%;
+  --left-control-x: 12%;
   --right-control-x: 88%;
   position: relative;
   z-index: 2;
@@ -546,7 +546,7 @@ a:focus-visible {
   position: absolute;
   top: 64%;
   right: calc(100% + 0.35rem);
-  width: clamp(3rem, 9vw, 4.5rem);
+  width: clamp(1.5rem, 4.5vw, 2.25rem);
   height: 1px;
   background: linear-gradient(90deg, transparent, currentColor);
   box-shadow: 0 0 0.7rem currentColor;
@@ -567,7 +567,7 @@ a:focus-visible {
   position: absolute;
   top: 50%;
   left: calc(100% + 0.35rem);
-  width: clamp(2rem, 5.5vw, 3rem);
+  width: clamp(1rem, 2.75vw, 1.5rem);
   height: 1px;
   background: linear-gradient(90deg, currentColor, transparent);
   box-shadow: 0 0 0.7rem currentColor;
