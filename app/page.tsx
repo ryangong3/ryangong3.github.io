@@ -272,6 +272,21 @@ export default function Home() {
   }, [language]);
 
   useEffect(() => {
+    const portfolio = document.getElementById("portfolio");
+    if (!portfolio) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHasInteracted(false);
+      },
+      { threshold: 0.02 },
+    );
+
+    observer.observe(portfolio);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!activeVideo) return;
     const close = (event: KeyboardEvent) => {
       if (event.key === "Escape") setActiveVideo(null);
