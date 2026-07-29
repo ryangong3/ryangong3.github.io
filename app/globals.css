@@ -289,6 +289,7 @@ a:focus-visible {
 .character-stage {
   --mind-x: 50%;
   --mind-y: 10.5%;
+  --mind-control-y: 1.5%;
   --left-hand-x: 23%;
   --right-hand-x: 74%;
   --hands-y: 43.5%;
@@ -530,9 +531,23 @@ a:focus-visible {
 }
 
 .hotspot-mind {
-  top: var(--mind-y);
+  top: var(--mind-control-y);
   left: var(--mind-x);
   color: var(--cyan);
+}
+
+.hotspot-mind::before {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  width: 1px;
+  height: clamp(2.4rem, 7vh, 3.8rem);
+  background: linear-gradient(180deg, currentColor, transparent);
+  box-shadow: 0 0 0.75rem currentColor;
+  content: "";
+  opacity: 0.58;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .hotspot-repair {
