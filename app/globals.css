@@ -295,7 +295,7 @@ a:focus-visible {
   --mind-control-x: 79%;
   --mind-control-y: 5%;
   --left-control-x: 7%;
-  --right-control-x: 93%;
+  --right-control-x: 88%;
   position: relative;
   z-index: 2;
   height: 39rem;
@@ -586,7 +586,7 @@ a:focus-visible {
   position: absolute;
   top: 50%;
   right: calc(100% + 0.35rem);
-  width: clamp(2.25rem, 6.5vw, 3.5rem);
+  width: clamp(1.125rem, 3.25vw, 1.75rem);
   height: 1px;
   background: linear-gradient(90deg, transparent, currentColor);
   box-shadow: 0 0 0.7rem currentColor;
