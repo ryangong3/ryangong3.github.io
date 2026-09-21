@@ -371,7 +371,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
+        <div className="hero-copy" id="skills">
           <p className="eyebrow">{t.kicker}</p>
           <h1>
             <span>{t.title[0]}</span>
@@ -482,7 +482,7 @@ export default function Home() {
           <a href="#portfolio">{t.exploreRelated}<ArrowRight /></a>
         </aside>
 
-        <div className="signal-strip" id="skills">
+        <div className="signal-strip">
           <div className="capability-strip">
             {t.skillStrip.map((skill, index) => {
               const Icon = stripIcons[index];
