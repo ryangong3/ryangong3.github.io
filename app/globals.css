@@ -170,7 +170,7 @@ a:focus-visible {
   position: relative;
   z-index: 3;
   align-self: center;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 10rem;
 }
 
 .eyebrow {
