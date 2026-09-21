@@ -168,7 +168,7 @@ const videos = [
 
 const copy = {
   zh: {
-    nav: ["能力", "作品", "方向", "联系"],
+    nav: ["能力", "作品", "教育与认证", "方向", "联系"],
     switchLabel: "Switch to English",
     kicker: "MULTIMEDIA TECHNOLOGIST",
     title: ["创造想法。", "构建现实。"],
@@ -226,7 +226,7 @@ const copy = {
     youtube: "在 YouTube 打开",
   },
   en: {
-    nav: ["Capabilities", "Work", "Direction", "Contact"],
+    nav: ["Capabilities", "Work", "Credentials", "Direction", "Contact"],
     switchLabel: "切换至中文",
     kicker: "MULTIMEDIA TECHNOLOGIST",
     title: ["Create ideas.", "Build reality."],
@@ -358,8 +358,9 @@ export default function Home() {
           <nav aria-label="Primary navigation">
             <a href="#skills">{t.nav[0]}</a>
             <a href="#portfolio">{t.nav[1]}</a>
-            <a href="#direction">{t.nav[2]}</a>
-            <a href="#contact">{t.nav[3]}</a>
+            <a href="#credentials">{t.nav[2]}</a>
+            <a href="#direction">{t.nav[3]}</a>
+            <a href="#contact">{t.nav[4]}</a>
           </nav>
           <button className="language-toggle" type="button" onClick={toggleLanguage} aria-label={t.switchLabel}>
             <span className={language === "en" ? "active" : ""}>EN</span>

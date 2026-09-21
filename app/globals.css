@@ -1466,7 +1466,8 @@ footer {
     gap: 1rem;
   }
 
-  .site-header nav a:nth-child(3) {
+  .site-header nav a:nth-child(1),
+  .site-header nav a:nth-child(4) {
     display: none;
   }
 
@@ -1667,12 +1668,17 @@ footer {
   }
 
   .site-header nav a:nth-child(2),
-  .site-header nav a:nth-child(4) {
+  .site-header nav a:nth-child(3),
+  .site-header nav a:nth-child(5) {
     display: inline;
   }
 
   .site-header nav {
-    gap: 0.75rem;
+    gap: 0.55rem;
+  }
+
+  .site-header nav a {
+    font-size: 0.58rem;
   }
 
   .language-toggle {
