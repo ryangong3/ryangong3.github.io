@@ -356,7 +356,7 @@ export default function Home() {
         </a>
         <div className="header-actions">
           <nav aria-label="Primary navigation">
-            <a href="#skills">{t.nav[0]}</a>
+            <a href="#top">{t.nav[0]}</a>
             <a href="#portfolio">{t.nav[1]}</a>
             <a href="#credentials">{t.nav[2]}</a>
             <a href="#direction">{t.nav[3]}</a>
@@ -371,7 +371,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-copy" id="skills">
+        <div className="hero-copy">
           <p className="eyebrow">{t.kicker}</p>
           <h1>
             <span>{t.title[0]}</span>
