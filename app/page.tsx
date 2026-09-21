@@ -4,11 +4,13 @@ import Image from "next/image";
 import {
   ArrowRight,
   Brain,
+  Certificate,
   Code,
   EnvelopeSimple,
   FilmSlate,
   FilmStrip,
   GlobeHemisphereWest,
+  GraduationCap,
   MapPin,
   Monitor,
   Phone,
@@ -189,6 +191,23 @@ const copy = {
     films: "视频作品",
     visit: "访问网站",
     play: "站内播放",
+    credentialsEyebrow: "EDUCATION / CREDENTIALS",
+    credentialsTitle: "教育与认证",
+    credentialsIntro: "专业学习与行业认证，为技术制作和内容运营打下基础。",
+    credentials: [
+      {
+        type: "学士学位",
+        title: "数字媒体专业",
+        organization: "计算机科学系 · 中国",
+        description: "完成计算机科学与数字媒体方向的本科专业学习。",
+      },
+      {
+        type: "专业认证",
+        title: "全媒体运营证书",
+        organization: "中国国家广播电视总局",
+        description: "具备跨平台内容策划、制作与运营相关的专业认证。",
+      },
+    ],
     rolesEyebrow: "DIRECTION / TORONTO",
     rolesTitle: "适合我的工作方向",
     roles: [
@@ -230,6 +249,23 @@ const copy = {
     films: "Video projects",
     visit: "Visit website",
     play: "Play here",
+    credentialsEyebrow: "EDUCATION / CREDENTIALS",
+    credentialsTitle: "Education & Credentials",
+    credentialsIntro: "Academic training and industry certification supporting my technical and creative work.",
+    credentials: [
+      {
+        type: "Bachelor’s Degree",
+        title: "Digital Media",
+        organization: "Department of Computer Science · China",
+        description: "Undergraduate study combining computer science and digital media.",
+      },
+      {
+        type: "Professional Certificate",
+        title: "All-Media Operations Certificate",
+        organization: "National Radio and Television Administration of China",
+        description: "Professional certification in cross-platform content planning, production and operations.",
+      },
+    ],
     rolesEyebrow: "DIRECTION / TORONTO",
     rolesTitle: "Roles I’m a strong fit for",
     roles: [
@@ -515,6 +551,31 @@ export default function Home() {
               </ul>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="credentials-section" id="credentials">
+        <div className="section-heading credentials-heading">
+          <div>
+            <p className="eyebrow">{t.credentialsEyebrow}</p>
+            <h2>{t.credentialsTitle}</h2>
+          </div>
+          <p>{t.credentialsIntro}</p>
+        </div>
+        <div className="credentials-grid">
+          {t.credentials.map((credential, index) => {
+            const Icon = index === 0 ? GraduationCap : Certificate;
+            return (
+              <article className="credential-card" key={credential.title}>
+                <div className="credential-icon"><Icon weight="duotone" /></div>
+                <div className="credential-number">0{index + 1}</div>
+                <p className="credential-type">{credential.type}</p>
+                <h3>{credential.title}</h3>
+                <p className="credential-organization">{credential.organization}</p>
+                <p className="credential-description">{credential.description}</p>
+              </article>
+            );
+          })}
         </div>
       </section>
 
