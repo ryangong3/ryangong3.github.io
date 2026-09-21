@@ -294,14 +294,21 @@ const zoneIcons = {
 const stripIcons = [Code, Monitor, Wrench, FilmSlate, FilmStrip, Sparkle];
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === "undefined") return "zh";
-    const saved = window.localStorage.getItem("ryan-portfolio-language");
-    return saved === "en" ? "en" : "zh";
-  });
+  const [language, setLanguage] = useState<Language>("zh");
   const [active, setActive] = useState<ZoneKey>("create");
   const [hasInteracted, setHasInteracted] = useState(false);
   const [activeVideo, setActiveVideo] = useState<(typeof videos)[number] | null>(null);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem("ryan-portfolio-language");
+    if (saved === "zh" || saved === "en") {
+      setLanguage(saved);
+      return;
+    }
+
+    const browserLanguage = window.navigator.language.toLowerCase();
+    setLanguage(browserLanguage.startsWith("zh") ? "zh" : "en");
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en";

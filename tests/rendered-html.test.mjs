@@ -47,6 +47,9 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.match(page, /type Language = "zh" \| "en"/);
   assert.match(page, /type ZoneKey = "mind" \| "repair" \| "create"/);
   assert.match(page, /ryan-portfolio-language/);
+  assert.match(page, /window\.navigator\.language\.toLowerCase\(\)/);
+  assert.match(page, /browserLanguage\.startsWith\("zh"\) \? "zh" : "en"/);
+  assert.match(page, /saved === "zh" \|\| saved === "en"/);
   assert.match(page, /Creative Thinking, AI & Learning/);
   assert.match(page, /设备、维修与故障排查/);
   assert.match(page, /https:\/\/www\.hoopsprout\.ca\//);
