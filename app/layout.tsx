@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     requestHeaders.get("x-forwarded-proto") ??
     (host.startsWith("localhost") ? "http" : "https");
   const baseUrl = new URL(`${protocol}://${host}`);
-  const title = "Ryan Gong | Creative Technologist";
+  const title = "Ryan Gong | Social Media Specialist";
   const description =
-    "一份可以探索的互动简历：网站制作、视频与动效、多媒体设备和软硬件故障排查。";
+    "Ryan Gong 的互动作品集：社交媒体策略、账号运营、短视频制作、品牌内容与数字营销。";
 
   return {
     metadataBase: baseUrl,
@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: new URL("/og.png", baseUrl).toString(),
           width: 1672,
           height: 941,
-          alt: "Creative Technologist interactive portfolio",
+          alt: "Ryan Gong social media specialist portfolio",
         },
       ],
     },

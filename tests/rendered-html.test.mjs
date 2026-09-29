@@ -29,9 +29,9 @@ test("server-renders Ryan Gong's interactive portfolio", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Ryan Gong \| Creative Technologist<\/title>/i);
+  assert.match(html, /<title>Ryan Gong \| Social Media Specialist<\/title>/i);
   assert.match(html, /RYAN GONG/);
-  assert.match(html, /MULTIMEDIA TECHNOLOGIST/);
+  assert.match(html, /SOCIAL MEDIA SPECIALIST/);
   assert.match(html, /作品集/);
   assert.match(html, /HoopSprout/);
   assert.match(html, /ClickStone Media/);
@@ -50,7 +50,7 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.match(page, /window\.navigator\.language\.toLowerCase\(\)/);
   assert.match(page, /browserLanguage\.startsWith\("zh"\) \? "zh" : "en"/);
   assert.match(page, /saved === "zh" \|\| saved === "en"/);
-  assert.match(page, /Creative Thinking, AI & Learning/);
+  assert.match(page, /Social Strategy & Content Planning/);
   assert.match(page, /Social Media Specialist/);
   assert.match(page, /Managed Douyin, blogs, websites and other digital channels/);
   assert.doesNotMatch(page, /9356-6776 Québec Inc\./);
@@ -58,7 +58,7 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.doesNotMatch(page, /Lanzhou University Public Facilities Service Center/);
   assert.doesNotMatch(page, /Passport No\./i);
   assert.doesNotMatch(page, /Date of Birth/i);
-  assert.match(page, /设备、维修与故障排查/);
+  assert.match(page, /平台运营与数据复盘/);
   assert.match(page, /https:\/\/www\.hoopsprout\.ca\//);
   assert.match(page, /https:\/\/clickstonemedia\.ca\//);
   assert.match(page, /https:\/\/www\.chinchine\.ca\//);
