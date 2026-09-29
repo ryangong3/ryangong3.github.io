@@ -183,6 +183,8 @@ const copy = {
     keySkills: "核心技能",
     exploreRelated: "查看相关作品",
     skillStrip: ["内容策略", "账号运营", "数据分析", "短视频制作", "视觉内容", "AI 工具"],
+    otherSkillsLabel: "其他技能",
+    otherSkills: ["网站开发", "AV 多媒体设备", "电脑软硬件", "故障排查", "After Effects", "动态设计"],
     languages: ["中文（母语）", "英语（中级）", "法语（中级）"],
     workEyebrow: "SELECTED WORK",
     portfolioTitle: "作品集",
@@ -265,6 +267,8 @@ const copy = {
     keySkills: "Key skills",
     exploreRelated: "Explore related work",
     skillStrip: ["Content strategy", "Channel management", "Analytics", "Short-form video", "Visual content", "AI tools"],
+    otherSkillsLabel: "Other skills",
+    otherSkills: ["Web development", "AV equipment", "Computer hardware & software", "Troubleshooting", "After Effects", "Motion design"],
     languages: ["Chinese (Native)", "English (Intermediate)", "French (Intermediate)"],
     workEyebrow: "SELECTED WORK",
     portfolioTitle: "Portfolio",
@@ -339,7 +343,8 @@ const zoneIcons = {
   create: FilmStrip,
 };
 
-const stripIcons = [Code, Monitor, Wrench, FilmSlate, FilmStrip, Sparkle];
+const socialStripIcons = [Brain, GlobeHemisphereWest, Monitor, FilmSlate, FilmStrip, Sparkle];
+const otherStripIcons = [Code, Monitor, Wrench, Wrench, FilmStrip, Sparkle];
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("zh");
@@ -540,13 +545,20 @@ export default function Home() {
         <div className="signal-strip">
           <div className="capability-strip">
             {t.skillStrip.map((skill, index) => {
-              const Icon = stripIcons[index];
+              const Icon = socialStripIcons[index];
               return <span key={skill}><Icon weight="duotone" />{skill}</span>;
             })}
           </div>
           <div className="language-strip">
             <GlobeHemisphereWest weight="duotone" />
             {t.languages.map((item) => <span key={item}>{item}</span>)}
+          </div>
+          <div className="other-skills-strip">
+            <strong>{t.otherSkillsLabel}</strong>
+            {t.otherSkills.map((skill, index) => {
+              const Icon = otherStripIcons[index];
+              return <span key={skill}><Icon weight="duotone" />{skill}</span>;
+            })}
           </div>
         </div>
       </section>

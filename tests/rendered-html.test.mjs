@@ -59,6 +59,9 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.doesNotMatch(page, /Passport No\./i);
   assert.doesNotMatch(page, /Date of Birth/i);
   assert.match(page, /平台运营与数据复盘/);
+  assert.match(page, /其他技能/);
+  assert.match(page, /AV 多媒体设备/);
+  assert.match(page, /Other skills/);
   assert.match(page, /https:\/\/www\.hoopsprout\.ca\//);
   assert.match(page, /https:\/\/clickstonemedia\.ca\//);
   assert.match(page, /https:\/\/www\.chinchine\.ca\//);

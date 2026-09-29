@@ -804,7 +804,8 @@ a:focus-visible {
 }
 
 .capability-strip,
-.language-strip {
+.language-strip,
+.other-skills-strip {
   display: flex;
   min-height: 3rem;
   align-items: center;
@@ -851,6 +852,36 @@ a:focus-visible {
 .language-strip span {
   color: #9eacc0;
   font-size: 0.56rem;
+}
+
+.other-skills-strip {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.other-skills-strip strong {
+  color: var(--cyan);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.other-skills-strip span {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: #8f9db1;
+  font-size: 0.56rem;
+}
+
+.other-skills-strip svg {
+  width: 1rem;
+  height: 1rem;
+  color: #77849a;
 }
 
 .portfolio-section,
@@ -1715,6 +1746,11 @@ footer {
     flex-wrap: wrap;
     min-height: 3.5rem;
     border-radius: 1rem;
+  }
+
+  .other-skills-strip {
+    border-radius: 1rem;
+    justify-content: flex-start;
   }
 
   .website-grid,
