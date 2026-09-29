@@ -62,6 +62,10 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.match(page, /其他技能/);
   assert.match(page, /AV 多媒体设备/);
   assert.match(page, /Other skills/);
+  assert.match(page, /小红书「秒懂法语」内容运营/);
+  assert.match(page, /公开主页显示 1千\+ 粉丝、1万\+ 获赞与收藏/);
+  assert.match(page, /兰州大学官方抖音内容制作/);
+  assert.match(page, /兰州大学线上音乐会视频制作/);
   assert.match(page, /https:\/\/www\.hoopsprout\.ca\//);
   assert.match(page, /https:\/\/clickstonemedia\.ca\//);
   assert.match(page, /https:\/\/www\.chinchine\.ca\//);

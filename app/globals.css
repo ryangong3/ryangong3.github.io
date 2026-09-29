@@ -936,6 +936,134 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
+.featured-cases-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 3.2rem 0 1.4rem;
+}
+
+.featured-cases-heading h3 {
+  margin: 0.55rem 0 0;
+  color: #f1f6ff;
+  font-size: clamp(1.55rem, 2.4vw, 2.35rem);
+  font-weight: 520;
+}
+
+.featured-cases-heading > p {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--muted);
+  text-align: right;
+}
+
+.social-case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 5rem;
+}
+
+.social-case-card {
+  display: flex;
+  min-height: 31rem;
+  flex-direction: column;
+  padding: clamp(1.4rem, 2.4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(circle at 90% 5%, rgba(35, 214, 255, 0.11), transparent 38%),
+    linear-gradient(150deg, rgba(10, 25, 43, 0.92), rgba(5, 12, 23, 0.96));
+}
+
+.social-case-card:first-child {
+  border-color: rgba(35, 214, 255, 0.45);
+  box-shadow: 0 1.2rem 3rem rgba(0, 164, 214, 0.08);
+}
+
+.social-case-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--cyan);
+  font-family: var(--font-geist-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.social-case-card > h3 {
+  margin: 1.8rem 0 0.8rem;
+  color: #f3f7ff;
+  font-size: 1.25rem;
+  font-weight: 560;
+  line-height: 1.35;
+}
+
+.social-case-card > p,
+.social-case-outcome p {
+  color: #a5b2c5;
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+.social-case-detail {
+  margin-top: 1.3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(124, 149, 183, 0.18);
+}
+
+.social-case-detail strong,
+.social-case-outcome strong {
+  color: #7e8da3;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.social-case-detail ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-case-detail li {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #c2cddd;
+  font-size: 0.65rem;
+}
+
+.social-case-outcome {
+  margin-top: 1.3rem;
+}
+
+.social-case-outcome p {
+  margin: 0.45rem 0 0;
+  color: #d5e8f4;
+}
+
+.social-case-card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  color: var(--cyan);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.social-case-card > a svg {
+  width: 0.9rem;
+}
+
 .website-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1755,6 +1883,7 @@ footer {
 
   .website-grid,
   .video-grid,
+  .social-case-grid,
   .experience-grid,
   .credentials-grid {
     grid-template-columns: 1fr;
@@ -1768,6 +1897,19 @@ footer {
   .section-heading > p {
     margin-top: 1rem;
     text-align: left;
+  }
+
+  .featured-cases-heading {
+    display: block;
+  }
+
+  .featured-cases-heading > p {
+    margin-top: 0.8rem;
+    text-align: left;
+  }
+
+  .social-case-card {
+    min-height: auto;
   }
 
   .role-list article {

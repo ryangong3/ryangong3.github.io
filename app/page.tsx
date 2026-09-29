@@ -166,6 +166,57 @@ const videos = [
   },
 ] as const;
 
+const digitalMediaCases = [
+  {
+    index: "01",
+    title: "小红书「秒懂法语」内容运营",
+    titleEn: "Xiaohongshu — French Made Easy",
+    type: "社交媒体账号运营",
+    typeEn: "Social media account management",
+    url: "https://www.xiaohongshu.com/user/profile/68a339c2000000001901050b",
+    description:
+      "围绕零基础法语、生活表达与考试内容进行选题策划，用 AI 辅助制作短视频，并根据平台趋势持续优化脚本、结构和表达。",
+    descriptionEn:
+      "Planned beginner French, everyday-language and exam content, produced AI-assisted short videos, and refined scripts and formats around platform trends.",
+    responsibilities: ["内容选题与规划", "AI 视频制作", "脚本撰写与内容优化"],
+    responsibilitiesEn: ["Content ideation and planning", "AI video production", "Scriptwriting and optimization"],
+    outcome: "公开主页显示 1千+ 粉丝、1万+ 获赞与收藏",
+    outcomeEn: "Public profile shows 1K+ followers and 10K+ likes and saves",
+  },
+  {
+    index: "02",
+    title: "兰州大学官方抖音内容制作",
+    titleEn: "Lanzhou University Official Douyin Content",
+    type: "机构短视频传播",
+    typeEn: "Institutional short-form video",
+    url: "https://juicy-soybean-e17.notion.site/Rui-Gong-Digital-Marketing-and-Video-Portfolio-32c63676aa9b80199942d4027b7c19c6",
+    description:
+      "围绕校园亮点与传播目标策划短视频内容，负责拍摄、剪辑和平台内容优化，让机构信息更适合短视频平台的观看逻辑。",
+    descriptionEn:
+      "Planned short-form stories around campus highlights and communication goals, then handled filming, editing and platform-focused optimization.",
+    responsibilities: ["内容策划", "视频拍摄与剪辑", "平台内容优化"],
+    responsibilitiesEn: ["Content planning", "Video shooting and editing", "Platform optimization"],
+    outcome: "提升校园内容的可看性、互动性与传播效率",
+    outcomeEn: "Improved the clarity, engagement and distribution of campus content",
+  },
+  {
+    index: "03",
+    title: "兰州大学线上音乐会视频制作",
+    titleEn: "Lanzhou University Online Concert Production",
+    type: "大型活动数字媒体制作",
+    typeEn: "Large-event digital media production",
+    url: "https://news.lzu.edu.cn/info/1600/609755.htm",
+    description:
+      "参与大型线上音乐会的前期拍摄与后期制作，通过多机位拍摄、素材整理、剪辑和视觉优化完成线上发布内容。",
+    descriptionEn:
+      "Supported a large online concert through multi-camera filming, footage organization, post-production editing and visual refinement for digital release.",
+    responsibilities: ["多机位拍摄", "素材整理", "后期剪辑与视觉优化"],
+    responsibilitiesEn: ["Multi-camera filming", "Footage organization", "Editing and visual refinement"],
+    outcome: "支持音乐会线上传播并提升观众观看体验",
+    outcomeEn: "Supported online distribution and a polished audience viewing experience",
+  },
+] as const;
+
 const copy = {
   zh: {
     nav: ["能力", "作品", "教育与认证", "方向", "联系"],
@@ -188,7 +239,14 @@ const copy = {
     languages: ["中文（母语）", "英语（中级）", "法语（中级）"],
     workEyebrow: "SELECTED WORK",
     portfolioTitle: "作品集",
-    portfolioIntro: "品牌网站、推广内容与短视频作品。",
+    portfolioIntro: "优先展示社交媒体与数字内容案例，并补充网站、品牌与广告作品。",
+    featuredEyebrow: "SOCIAL MEDIA / DIGITAL CONTENT",
+    featuredTitle: "重点内容案例",
+    featuredIntro: "从策略、制作到发布优化的真实项目。",
+    caseRole: "负责内容",
+    caseOutcome: "项目成果",
+    viewCase: "查看项目",
+    moreWork: "其他数字作品",
     websites: "网站项目",
     films: "视频作品",
     visit: "访问网站",
@@ -272,7 +330,14 @@ const copy = {
     languages: ["Chinese (Native)", "English (Intermediate)", "French (Intermediate)"],
     workEyebrow: "SELECTED WORK",
     portfolioTitle: "Portfolio",
-    portfolioIntro: "Selected brand websites, campaign content and short-form video.",
+    portfolioIntro: "Social media and digital content first, followed by selected web, brand and advertising work.",
+    featuredEyebrow: "SOCIAL MEDIA / DIGITAL CONTENT",
+    featuredTitle: "Featured Content Cases",
+    featuredIntro: "Real projects spanning strategy, production, publishing and optimization.",
+    caseRole: "Responsibilities",
+    caseOutcome: "Outcome",
+    viewCase: "View project",
+    moreWork: "Additional Digital Work",
     websites: "Website projects",
     films: "Video projects",
     visit: "Visit website",
@@ -572,8 +637,43 @@ export default function Home() {
           <p>{t.portfolioIntro}</p>
         </div>
 
+        <div className="featured-cases-heading">
+          <div>
+            <p className="eyebrow">{t.featuredEyebrow}</p>
+            <h3>{t.featuredTitle}</h3>
+          </div>
+          <p>{t.featuredIntro}</p>
+        </div>
+        <div className="social-case-grid">
+          {digitalMediaCases.map((project) => (
+            <article className="social-case-card" key={project.index}>
+              <div className="social-case-topline">
+                <span>{project.index}</span>
+                <span>{language === "zh" ? project.type : project.typeEn}</span>
+              </div>
+              <h3>{language === "zh" ? project.title : project.titleEn}</h3>
+              <p>{language === "zh" ? project.description : project.descriptionEn}</p>
+              <div className="social-case-detail">
+                <strong>{t.caseRole}</strong>
+                <ul>
+                  {(language === "zh" ? project.responsibilities : project.responsibilitiesEn).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="social-case-outcome">
+                <strong>{t.caseOutcome}</strong>
+                <p>{language === "zh" ? project.outcome : project.outcomeEn}</p>
+              </div>
+              <a href={project.url} target="_blank" rel="noreferrer">
+                {t.viewCase}<ArrowRight />
+              </a>
+            </article>
+          ))}
+        </div>
+
         <div className="group-heading">
-          <span>{t.websites}</span>
+          <span>{t.moreWork} · {t.websites}</span>
           <span>WEB / 01—03</span>
         </div>
         <div className="website-grid">
