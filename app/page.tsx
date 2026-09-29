@@ -208,6 +208,30 @@ const copy = {
         description: "具备跨平台内容策划、制作与运营相关的专业认证。",
       },
     ],
+    experienceEyebrow: "WORK EXPERIENCE / CHINA + CANADA",
+    experienceTitle: "工作经历",
+    experienceIntro: "社交媒体运营、数字内容制作与线上推广职责。",
+    experiences: [
+      {
+        title: "社交媒体专员（加拿大）",
+        duties: [
+          "制作宣传册、报告、资讯简报及其他营销文件。",
+          "建立并维护营销素材库，支持品牌和客户推广。",
+          "执行线上营销、电商及网站推广活动。",
+          "更新公开媒体信息与数据，管理社交媒体账号、评论和客户反馈。",
+        ],
+      },
+      {
+        title: "社交媒体专员（中国）",
+        duties: [
+          "运营抖音、博客、网站及其他数字渠道，保持一致的线上形象。",
+          "制定社交媒体运营策略，提升曝光度与用户参与度。",
+          "制作图片、视频和文字内容，并针对目标受众优化表达。",
+          "拍摄校园活动，协调活动策划、视频制作及后期剪辑。",
+          "按计划发布和推广内容，分析数据与趋势并持续优化。",
+        ],
+      },
+    ],
     rolesEyebrow: "DIRECTION / TORONTO",
     rolesTitle: "适合我的工作方向",
     roles: [
@@ -264,6 +288,30 @@ const copy = {
         title: "All-Media Operations Certificate",
         organization: "National Radio and Television Administration of China",
         description: "Professional certification in cross-platform content planning, production and operations.",
+      },
+    ],
+    experienceEyebrow: "WORK EXPERIENCE / CHINA + CANADA",
+    experienceTitle: "Work Experience",
+    experienceIntro: "Social media, digital content and online promotion responsibilities.",
+    experiences: [
+      {
+        title: "Social Media Specialist — Canada",
+        duties: [
+          "Prepared brochures, reports, newsletters and other marketing documents.",
+          "Developed and maintained a portfolio of marketing materials for brand and client promotion.",
+          "Supported online marketing, e-commerce and website promotions.",
+          "Updated public-facing media information and data while managing social accounts, reviews and client feedback.",
+        ],
+      },
+      {
+        title: "Social Media Specialist — China",
+        duties: [
+          "Managed Douyin, blogs, websites and other digital channels to maintain a consistent online presence.",
+          "Developed social media strategies to improve visibility and audience engagement.",
+          "Created images, videos and written content tailored to target audiences.",
+          "Filmed campus events and coordinated event planning, video production and post-production editing.",
+          "Scheduled and promoted content, then analyzed performance data and trends to guide optimization.",
+        ],
       },
     ],
     rolesEyebrow: "DIRECTION / TORONTO",
@@ -556,6 +604,26 @@ export default function Home() {
               <p>{language === "zh" ? video.description : video.descriptionEn}</p>
               <ul className="tag-list">
                 {(language === "zh" ? video.tags : video.tagsEn).map((tag) => <li key={tag}>{tag}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="experience-section" id="experience">
+        <div className="section-heading experience-heading">
+          <div>
+            <p className="eyebrow orange">{t.experienceEyebrow}</p>
+            <h2>{t.experienceTitle}</h2>
+          </div>
+          <p>{t.experienceIntro}</p>
+        </div>
+        <div className="experience-grid">
+          {t.experiences.map((experience) => (
+            <article className="experience-card" key={experience.title}>
+              <h3>{experience.title}</h3>
+              <ul>
+                {experience.duties.map((duty) => <li key={duty}>{duty}</li>)}
               </ul>
             </article>
           ))}

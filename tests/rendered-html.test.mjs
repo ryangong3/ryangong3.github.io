@@ -51,6 +51,13 @@ test("keeps bilingual interactions and real project links in source", async () =
   assert.match(page, /browserLanguage\.startsWith\("zh"\) \? "zh" : "en"/);
   assert.match(page, /saved === "zh" \|\| saved === "en"/);
   assert.match(page, /Creative Thinking, AI & Learning/);
+  assert.match(page, /Social Media Specialist/);
+  assert.match(page, /Managed Douyin, blogs, websites and other digital channels/);
+  assert.doesNotMatch(page, /9356-6776 Québec Inc\./);
+  assert.doesNotMatch(page, /Gansu Daercheng Human Resources Service Co\., Ltd\./);
+  assert.doesNotMatch(page, /Lanzhou University Public Facilities Service Center/);
+  assert.doesNotMatch(page, /Passport No\./i);
+  assert.doesNotMatch(page, /Date of Birth/i);
   assert.match(page, /设备、维修与故障排查/);
   assert.match(page, /https:\/\/www\.hoopsprout\.ca\//);
   assert.match(page, /https:\/\/clickstonemedia\.ca\//);

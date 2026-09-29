@@ -854,6 +854,7 @@ a:focus-visible {
 }
 
 .portfolio-section,
+.experience-section,
 .credentials-section,
 .direction-section,
 .contact-section {
@@ -1064,6 +1065,89 @@ a:focus-visible {
   bottom: 0.75rem;
   z-index: 3;
   letter-spacing: 0.08em;
+}
+
+.experience-section {
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 24%, rgba(255, 154, 44, 0.08), transparent 26rem),
+    rgba(2, 7, 15, 0.78);
+}
+
+.experience-heading {
+  margin-bottom: 2.4rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.experience-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  background: linear-gradient(145deg, rgba(11, 22, 37, 0.96), rgba(4, 10, 19, 0.94));
+  box-shadow: inset 0 0 3rem rgba(255, 255, 255, 0.018);
+}
+
+.experience-card::before {
+  position: absolute;
+  top: 0;
+  left: 2.4rem;
+  width: 5rem;
+  height: 1px;
+  background: var(--orange);
+  box-shadow: 0 0 1rem rgba(255, 154, 44, 0.7);
+  content: "";
+}
+
+.experience-card:nth-child(2)::before {
+  background: var(--cyan);
+  box-shadow: 0 0 1rem rgba(41, 216, 255, 0.7);
+}
+
+.experience-card h3 {
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(1.4rem, 2.2vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.experience-card ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-card li {
+  position: relative;
+  padding-left: 1rem;
+  color: #91a0b5;
+  font-size: 0.76rem;
+  line-height: 1.68;
+}
+
+.experience-card li::before {
+  position: absolute;
+  top: 0.68rem;
+  left: 0;
+  width: 0.28rem;
+  height: 0.28rem;
+  border-radius: 50%;
+  background: var(--orange);
+  content: "";
+}
+
+.experience-card:nth-child(2) li::before {
+  background: var(--cyan);
 }
 
 .credentials-section {
@@ -1635,6 +1719,7 @@ footer {
 
   .website-grid,
   .video-grid,
+  .experience-grid,
   .credentials-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1717,6 +1802,7 @@ footer {
   }
 
   .portfolio-section,
+  .experience-section,
   .credentials-section,
   .direction-section,
   .contact-section {
